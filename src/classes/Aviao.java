@@ -20,5 +20,15 @@ public class Aviao {
 	public void setReserva(int reserva) {
 		this.reserva = reserva;
 	}
-	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Aviao [id=");
+		builder.append(id);
+		builder.append(", reserva=");
+		builder.append(reserva);
+		builder.append("]");
+		return builder.toString();
+	}
 }

@@ -14,7 +14,12 @@ public class Fila {
 		return tamanho == 0;
 	}
 	
-	public Aviao getInicio() {
+	
+	public Nodo getInicio() {
+		return inicio;
+	}
+
+	public Aviao getInicioDado() {
 		if(!estaVazio()) {
 			return inicio.getDado();
 		} else {
@@ -57,5 +62,9 @@ public class Fila {
 			fim = null;
 		}
 		return valor;
+	}
+
+	public void ordenarFilaPorReserva() {
+		
 	}
 }
