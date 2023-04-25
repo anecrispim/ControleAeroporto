@@ -64,7 +64,40 @@ public class Fila {
 		return valor;
 	}
 
-	public void ordenarFilaPorReserva() {
-		
+	public Fila ordenarFilaPorReserva(Fila fila, Aeroporto aero) {
+		if (estaVazio()) {
+			System.out.println("Lista vazia");
+			return null;
+		}
+		Fila novaFila = new Fila();
+		while (!fila.estaVazio()) {
+			if (fila.getInicioDado().getReserva() < 5) {
+				aero.setNumAeronavesDeReserva(+1);
+			}
+			Aviao elemento = fila.remover();
+			Nodo aux = novaFila.getInicio();
+			Nodo anterior = null;
+			boolean inserido = false;
+			
+			while (aux != null && !inserido) {
+				if (elemento.getReserva() <= aux.getDado().getReserva()) {
+					Nodo novo = new Nodo(elemento);
+					novo.setProx(aux);
+					if (anterior == null) {
+						novaFila.inicio = novo;
+					} else {
+						anterior.setProx(novo);
+					}
+					inserido = true;
+				}
+				anterior = aux;
+				aux = aux.getProx();
+			}
+			
+			if (!inserido) {
+				novaFila.inserir(elemento);
+			}
+		}
+		return novaFila;
 	}
 }
